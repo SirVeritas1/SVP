@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SV Projects: Coming Soon Page">
+    <title>Coming Soon | SV Projects</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Font and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0e0e0e, #141414);
+            color: #00ff99;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust the height as needed */
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #00ff99;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 255, 153, 0.2);
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-shadow: 0 0 10px #00ff99, 0 0 20px #007bff;
+            animation: glowText 2s infinite alternate;
+        }
+
+        @keyframes glowText {
+            from {
+                text-shadow: 0 0 10px #00ff99, 0 0 20px #007bff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #00ff99, 0 0 30px #007bff;
+            }
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        /* Social Media Icons */
+        .socials {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .socials a {
+            color: #ffffff;
+            font-size: 30px;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .socials a:hover {
+            color: #00ff99;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://github.com/SirVeritas1/SV-Logo/blob/main/sv_logo.png?raw=true" alt="SV Projects Logo">
+        </div>
+        <nav>
+            <a href="">Home Page</a>
+        </nav>
+    </header>
+
+    <div>
+        <h1>Coming Soon!</h1>
+        <p>Stay tuned for updates.</p>
+    </div>
+
+    <!-- Social Media Section -->
+    <div class="socials">
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+</body>
+
+</html>
