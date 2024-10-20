@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SV Projects: Futuristic Web Solutions">
+    <title>SV Projects | The Future of Web</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Font and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-theme {
+            background-color: #f0f0f0;
+            color: #1c1c1c;
+        }
+
+        body.neon-theme {
+            background-color: #141414;
+            color: #00ff99;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.5s ease;
+        }
+
+        header.light-theme {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00ff99;
+        }
+
+        /* Glowing buttons */
+        .glow-btn {
+            padding: 15px 30px;
+            background: #007bff;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .glow-btn:hover {
+            background-color: #00ff99;
+            border: 2px solid #007bff;
+            box-shadow: 0 0 15px #00ff99, 0 0 25px #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.75);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: #00ff99;
+            text-shadow: 0 0 10px #00ff99, 0 0 20px #007bff;
+            margin-bottom: 20px;
+            animation: glowText 2s infinite alternate;
+        }
+
+        @keyframes glowText {
+            from {
+                text-shadow: 0 0 10px #00ff99, 0 0 20px #007bff;
+            }
+            to {
+                text-shadow: 0 0 20px #00ff99, 0 0 30px #007bff;
+            }
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 100px 20px;
+            background: #1b1b1b;
+            border-top-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .about-us h2 {
+            font-size: 2.8rem;
+            color: #00ff99;
+            margin-bottom: 20px;
+        }
+
+        .about-us p {
+            font-size: 1.4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 20px;
+            background: #0e0e0e;
+        }
+
+        .projects .section-title {
+            font-size: 2.8rem;
+            color: #00ff99;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .project-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .project-item {
+            background: #1c1c1c;
+            border: 2px solid #00ff99;
+            padding: 30px;
+            width: 300px;
+            height: 250px;
+            text-align: center;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.8), 0 0 30px rgba(0, 123, 255, 0.7);
+        }
+
+        .project-item h3 {
+            color: #00ff99;
+            font-size: 1.5rem;
+        }
+
+        .project-item p {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 20px;
+            background: #1b1b1b;
+            text-align: center;
+            border-top-right-radius: 60px;
+            border-bottom-left-radius: 60px;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            color: #00ff99;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: transparent;
+            border: 2px solid #00ff99;
+            color: #ffffff;
+            border-radius: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .contact button {
+            padding: 15px 30px;
+            background: #007bff;
+            color: #ffffff;
+            border: 2px solid transparent;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ff99, 0 0 30px #007bff;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact button:hover {
+            background-color: #00ff99;
+            border: 2px solid #007bff;
+            box-shadow: 0 0 25px #007bff, 0 0 35px #00ff99;
+        }
+
+        /* Social Media Icons */
+        .socials {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .socials a {
+            color: #ffffff;
+            font-size: 30px;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .socials a:hover {
+            color: #00ff99;
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #0e0e0e;
+            color: #ffffff;
+            border-top: 2px solid #00ff99;
+        }
+
+        footer a {
+            color: #00ff99;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Theme Toggle Options */
+        #theme-options {
+            display: none;
+            position: absolute;
+            right: 50px;
+            top: 70px;
+            background-color: #1c1c1c;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .theme-option {
+            padding: 10px 15px;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-option:hover {
+            background-color: #007bff;
+        }
+
+        .warning {
+    background: linear-gradient(135deg, #00ff99, #007bff);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.8), 0 0 20px rgba(0, 123, 255, 0.7);
+    position: relative;
+}
+
+.warning-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #00ff99, 0 0 20px #007bff;
+    }
+    100% {
+        text-shadow: 0 0 20px #00ff99, 0 0 30px #007bff;
+    }
+}
+
+.invisible-spacer {
+    height: 50px; /* Adjust the height as needed */
+    width: 100%; /* Full width */
+    visibility: hidden; /* Makes the spacer invisible */
+}
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://github.com/SirVeritas1/SVP/blob/main/graphic-designs/SVP%20Logo%20(1).png?raw=true" alt="SV Projects Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="glow-btn">Toggle Theme</button>
+                    <div id="theme-options">
+                        <div class="theme-option" data-theme="dark">Dark Theme</div>
+                        <div class="theme-option" data-theme="light">Light Theme</div>
+                        <div class="theme-option" data-theme="neon">Neon Theme</div>
+                    </div>
+                </li>
+            </ul>
+        </nav>      
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <div class="warning">
+                <span class="warning-icon">⚠️</span> 
+                This website is currently in development. Features may change, and some functionalities may not be fully operational.
+            </div>
+            
+            <h1>SV Projects: The Future is Now</h1>
+            <p>Innovative solutions to power your digital vision.</p>
+            <div class="invisible-spacer"></div>
+
+            <a href="#about-us" class="glow-btn">Discover More</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="about-us">
+        <h2>Who We Are</h2>
+        <p>At SV Projects, we blend creativity with technology to deliver cutting-edge web solutions that drive results.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Our Creations</h2>
+        <div class="project-scroll">
+            <div class="project-item">
+                <h3>Coming soon!</h3>
+                <p>More info coming soon!</p>
+            </div>
+            <div class="project-item">
+                <h3>VentSafe</h3>
+                <p>More info coming soon!</p>
+            </div>
+            <div class="project-item">
+                <h3>Coming soon!</h3>
+                <p>More info coming soon!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="glow-btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Social Media Section -->
+    <div class="socials">
+        <a href="https://sirveritas1.github.io/SVP/Commingsoon.html" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://sirveritas1.github.io/SVP/Commingsoon.html" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://sirveritas1.github.io/SVP/Commingsoon.html" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 SV Projects. All rights reserved. <a href="https://sirveritas1.github.io/SVP/Commingsoon.html">Legal Notices</a></p>
+    </footer>
+
+    <!-- JavaScript for Theme Toggle -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeOptions = document.getElementById('theme-options');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            themeOptions.style.display = themeOptions.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                const selectedTheme = e.target.getAttribute('data-theme');
+                body.className = ''; // Reset theme classes
+                body.classList.add(${selectedTheme}-theme);
+                themeOptions.style.display = 'none'; // Hide after selection
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!themeToggle.contains(e.target) && !themeOptions.contains(e.target)) {
+                themeOptions.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
