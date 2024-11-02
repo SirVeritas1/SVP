@@ -1,1 +1,440 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SV Projects (SVP)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background: linear-gradient(to right, #111, #222);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: linear-gradient(90deg, #111, #222);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Logo and Tooltip Styling */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .tooltip {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            background-color: #1db954;
+            color: #0d0d0d;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .logo-container img {
+            width: 60px;
+            transition: transform 0.6s ease;
+        }
+
+        .logo-container:hover .tooltip {
+            opacity: 1;
+            transform: translateY(-10px);
+        }
+
+        .logo-container:hover img {
+            transform: rotate(360deg);
+        }
+
+        h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #1db954;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover:before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #1db954;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 50px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #333;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1db954;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Project Grid with Hover Effects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            position: relative;
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.9);
+            background: linear-gradient(to bottom right, #1a1a1a, #111);
+        }
+
+        .project-card h3 {
+            font-size: 1.8em;
+            color: #1db954;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #b8b8b8;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1db954;
+            color: #0d0d0d;
+            font-weight: bold;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .project-card:hover .read-more-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section */
+#testimonials {
+    padding: 50px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+#testimonials h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #1db954;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Testimonial Grid */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Testimonial Card Styling */
+.testimonial-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #b8b8b8;
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.9);
+    background: linear-gradient(to bottom right, #1a1a1a, #111);
+}
+
+.testimonial-card p {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.testimonial-card h3 {
+    font-size: 1em;
+    color: #1db954;
+    font-weight: bold;
+}
+
+
+          /* Social Media Icon Styling */
+.socials {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.socials a {
+    color: #1db954;
+    margin: 0 15px;
+    font-size: 2.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+}
+
+/* Icon Hover Effects */
+.socials a:hover {
+    color: #1aa34a;
+    transform: scale(1.1);
+}
+
+
+        /* Contact Form */
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        #contact label {
+            color: #b8b8b8;
+            font-size: 1.1em;
+        }
+
+        #contact input,
+        #contact textarea {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            outline: none;
+        }
+
+        #contact button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            color: #f4f4f4;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #contact button:hover {
+            background-color: #1aa34a;
+        }
+
+        /* Footer */
+        footer {
+            padding: 15px 5%;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: #a8a8a8;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hidden Easter Egg Icon -->
+    <div class="secret-button" id="secretButton" title="Click me for a surprise!">👋</div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="https://github.com/SirVeritas1/SVP/blob/main/graphic/SVP%20Logo%20(1).png?raw=true" alt="SV Projects Logo">
+            <h1>SV Projects</h1>
+            <div class="tooltip">Oh, you like our logo, huh?</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About SV Projects</h2>
+        <p>SV Projects, also known as Sir Veritas Projects, is a collaborative group focused on pushing the boundaries of innovation. We engage in diverse projects, from research tools to community platforms, delivering both futuristic and enduring solutions.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Our Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Veritates News</h3>
+                <p>A news platform with only the most important news</p>
+                <a href="comingsoon.html" class="read-more-btn">Read More</a>
+            </div>
+            <div class="project-card">
+                <h3>Research Tools</h3>
+                <p>Innovative solutions for enhancing research capabilities.</p>
+                <a href="comingsoon.html" class="read-more-btn">Read More</a>
+            </div>
+            <div class="project-card">
+                <h3>Discord Bots</h3>
+                <p>High-functionality bots to elevate user experience on Discord.</p>
+                <a href="comingsoon.html" class="read-more-btn">Read More</a>
+            </div>
+            <div class="project-card">
+                <h3>Websites</h3>
+                <p>Website projects by SV Projects</p>
+                <a href="comingsoon.html" class="read-more-btn">Read More</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Discord Community</h3>
+                <p>A community for all people trying to build their own, or be apart of ours, even the ones that just want to hang out</p>
+                <a href="comingsoon.html" class="read-more-btn">Read More</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Documentaion</h3>
+                <p>Documents, lists, research papers ect.</p>
+                <a href="comingsoon.html" class="read-more-btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+<section id="testimonials">
+    <h2>What People Are Saying</h2>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <p>Comming soon!</p>
+            <h3>Sir Veritas</h3>
+        </div>
+    </div>
+</section>
+
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you're interested in our work or would like to collaborate, feel free to reach out using the form below:</p>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="socials">
+            <a href="https://x.com/Sir_Veritas_" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/SirVeritas1" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linktr.ee/SirVeritas" target="_blank" title="Linktree"><i class="fas fa-link"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 SV Projects. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Easter Egg Reveal on 'S' Key Press
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 's' || event.key === 'S') {
+                document.body.classList.toggle('easter-egg');
+            }
+        });
+
+        // Alert for Secret Button Click
+        document.getElementById('secretButton').addEventListener('click', function() {
+            alert("Why you up here? Go check out our stuff!");
+        });
+    </script>
+</body>
+</html>
