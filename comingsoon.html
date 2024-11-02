@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #111, #222);
+            color: #e0e0e0;
+            font-family: 'Roboto Condensed', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Coming Soon Message */
+        .coming-soon {
+            font-size: 3em;
+            font-weight: bold;
+            color: #1db954;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Hidden Easter Egg Message */
+        .easter-egg-message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #1aa34a;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Secret Button */
+        .secret-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #1db954;
+            color: #0d0d0d;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .secret-button:hover {
+            background-color: #1aa34a;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="coming-soon">Coming Soon!</div>
+        <div class="easter-egg-message">You found the Easter egg! Stay tuned for something amazing! 🎉</div>
+    </div>
+
+    <!-- Secret Button -->
+    <div class="secret-button" id="secretButton">🤫 Click Me</div>
+
+    <script>
+        // Easter Egg Reveal on Key Press
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'c' || event.key === 'C') {
+                document.querySelector('.easter-egg-message').style.display = 'block';
+            }
+        });
+
+        // Alert for Secret Button Click
+        document.getElementById('secretButton').addEventListener('click', function() {
+            alert("Shh! You're ahead of everyone else! 😉");
+        });
+    </script>
+</body>
+</html>
